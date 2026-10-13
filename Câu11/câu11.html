@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Câu 11 - Upload File</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .result { margin-top: 15px; font-weight: bold; color: #d35400; }
+    </style>
+</head>
+<body>
+    <h3>Câu 11: Hiển thị thông tin file upload</h3>
+    <input type="file" id="fileUpload">
+    <div id="fileResult" class="result"></div>
+
+    <script>
+        $(document).ready(function() {$('#fileUpload').on('change', function() {
+                let filePath = $(this).val();
+                if (filePath) {
+                    let fileName = filePath.split('\\').pop();
+                    let fileExt = fileName.split('.').pop();
+                    $('#fileResult').text(`Tên file: ${fileName} | Đuôi file: .${fileExt}`);
+                } else {
+                    $('#fileResult').text('');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

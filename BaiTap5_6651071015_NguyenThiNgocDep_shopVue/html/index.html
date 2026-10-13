@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Phụ Kiện Điện Thoại Vue.js</title>
+    <!-- Nhúng Tailwind CSS để định dạng giao diện -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Nhúng Vue 3 CDN -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+    
+    <!-- KHU VỰC VUE HOẠT ĐỘNG -->
+    <div id="app" class="min-h-screen flex flex-col">
+        
+        <!-- HEADER (Yêu cầu 3) -->
+        <header class="bg-blue-600 text-white p-4 shadow-md sticky top-0 z-10">
+            <div class="container mx-auto flex justify-between items-center">
+                <!-- Navigation -->
+                <nav class="space-x-6 font-semibold hidden md:block">
+                    <a href="#" class="hover:text-blue-200">Trang chủ</a>
+                    <a href="#" class="hover:text-blue-200">Sản phẩm</a>
+                    <a href="#" class="hover:text-blue-200">Khuyến mãi</a>
+                    <a href="#" class="hover:text-blue-200">Liên hệ</a>
+                </nav>
+                <!-- Giỏ hàng hiển thị số lượng (Reactivity) -->
+                <div class="flex items-center space-x-2 bg-blue-700 px-4 py-2 rounded-full">
+                    <span>🛒 Giỏ hàng:</span>
+                    <!-- Hiển thị số lượng giỏ hàng bằng interpolation -->
+                    <span class="font-bold text-yellow-300">({{ cart.length }})</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="container mx-auto p-6 flex-grow grid grid-cols-1 lg:grid-cols-4 gap-6">
+            <!-- CỘT TRÁI: DANH SÁCH SẢN PHẨM -->
+            <div class="lg:col-span-3">
+                
+                <!-- SECTION Khuyến mãi tĩnh (Yêu cầu 9) -->
+                <section class="bg-gradient-to-r from-purple-500 to-indigo-500 text-white text-center p-6 rounded-lg mb-6 shadow">
+                    <h2 class="text-2xl font-bold uppercase tracking-wide">Giảm giá 20% cho tất cả ốp lưng!</h2>
+                    <p class="mt-2">Chương trình áp dụng đến hết tuần này. Nhanh tay kẻo lỡ.</p>
+                </section>
+
+                <!-- Ô tìm kiếm 2 chiều v-model (Yêu cầu 8) -->
+                <div class="mb-6">
+                    <input type="text" v-model="tuKhoa" placeholder="🔍 Nhập tên phụ kiện cần tìm..." 
+                           class="w-full p-4 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                </div>
+
+                <!-- SECTION Sản phẩm (v-for qua danhSachLoc) -->
+                <section class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+                    <!-- ARTICLE cho từng sản phẩm (Yêu cầu 5) -->
+                    <article v-for="sp in danhSachLoc" :key="sp.id" class="bg-white border rounded-xl p-4 shadow hover:shadow-lg transition flex flex-col">
+                        <!-- Ảnh sản phẩm -->
+                        <img :src="sp.anh" :alt="sp.ten" class="h-40 w-full object-cover mb-4 rounded">
+                        <h3 class="font-bold text-lg mb-1">{{ sp.ten }}</h3>
+                        <p class="text-sm text-gray-500 mb-2">{{ sp.moTa }}</p>
+                        
+                        <div class="mt-auto flex justify-between items-center">
+                            <span class="text-blue-600 font-bold">{{ sp.gia.toLocaleString() }}đ</span>
+                            <!-- Nút thêm vào giỏ (Yêu cầu 6) -->
+                            <button @click="themVaoGio(sp)" class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded-lg transition font-semibold text-sm">
+                                + Thêm
+                            </button>
+                        </div>
+                    </article>
+                </section>
+            </div>
+
+            <!-- CỘT PHẢI: ASIDE GIỎ HÀNG (Yêu cầu 7) -->
+            <aside class="lg:col-span-1">
+                <div class="bg-white border rounded-xl p-5 shadow sticky top-24">
+                    <h2 class="font-bold text-xl mb-4 border-b pb-2">Giỏ hàng của bạn</h2>
+                    
+                    <!-- Hiển thị khi giỏ hàng trống (v-if) -->
+                    <div v-if="cart.length === 0" class="text-gray-500 text-center py-8 bg-gray-50 rounded italic">
+                        Giỏ hàng trống
+                    </div>
+                    
+                    <!-- Hiển thị khi có sản phẩm (v-else) -->
+                    <div v-else>
+                        <ul class="space-y-4 mb-6 max-h-96 overflow-y-auto pr-2">
+                            <li v-for="(item, index) in cart" :key="index" class="flex justify-between items-start border-b pb-2">
+                                <div class="pr-2">
+                                    <h4 class="font-semibold text-sm line-clamp-1">{{ item.ten }}</h4>
+                                    <p class="text-blue-600 text-sm font-medium">{{ item.gia.toLocaleString() }}đ</p>
+                                </div>
+                                <!-- Nút xóa khỏi giỏ -->
+                                <button @click="xoaKhoiGio(index)" class="text-red-500 hover:text-red-700 hover:bg-red-50 p-1 rounded text-sm font-bold shrink-0">Xóa</button>
+                            </li>
+                        </ul>
+                        <!-- Tính tổng tiền bằng computed -->
+                        <div class="flex justify-between items-center font-bold text-lg pt-4 border-t">
+                            <span>Tổng tiền:</span>
+                            <span class="text-blue-600">{{ tongTien.toLocaleString() }}đ</span>
+                        </div>
+                        <button class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-3 rounded-lg mt-4 transition shadow">
+                            Thanh toán ngay
+                        </button>
+                    </div>
+                </div>
+            </aside>
+        </main>
+
+        <!-- FOOTER (Yêu cầu 10) -->
+        <footer class="bg-gray-800 text-gray-300 py-8 text-center mt-auto">
+            <p class="font-semibold mb-2">Shop Phụ Kiện Điện Thoại Mini</p>
+            <p class="text-sm">Liên hệ: contact@phukienmini.com | Điện thoại: 012

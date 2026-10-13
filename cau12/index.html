@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Câu 12 - Radio Condition</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .hidden-box { display: none; margin-top: 10px; margin-bottom: 20px; }
+        input[type="text"] { padding: 5px; width: 200px; }
+    </style>
+</head>
+<body>
+    <h3>Câu 12: Passport & Credit Card</h3>
+    
+    <p><strong>Bạn có Passport không?</strong></p>
+    <label><input type="radio" name="hasPassport" value="yes"> Yes</label>
+    <label><input type="radio" name="hasPassport" value="no" checked> No</label>
+    <div id="passportBox" class="hidden-box">
+        <input type="text" placeholder="Nhập số Passport...">
+    </div>
+
+    <p><strong>Bạn có Credit Card không?</strong></p>
+    <label><input type="radio" name="hasCredit" value="yes"> Yes</label>
+    <label><input type="radio" name="hasCredit" value="no" checked> No</label>
+    <div id="creditBox" class="hidden-box">
+        <input type="text" placeholder="Nhập số Credit Card...">
+    </div>
+
+    <script>
+        $(document).ready(function() {$('input[name="hasPassport"]').on('change', function() {
+                if ($(this).val() === 'yes') {$('#passportBox').slideDown();
+                } else {
+                    $('#passportBox').slideUp();
+                }
+            });
+
+            $('input[name="hasCredit"]').on('change', function() {
+                if ($(this).val() === 'yes') {$('#creditBox').slideDown();
+                } else {
+                    $('#creditBox').slideUp();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

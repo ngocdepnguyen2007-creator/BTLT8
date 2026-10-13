@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Câu 14 - Dark Mode Toggle</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; transition: background 0.3s, color 0.3s; }
+        button { padding: 10px 20px; cursor: pointer; font-weight: bold; border-radius: 5px; border: 1px solid #ccc; }
+        
+        /* Class theme tối sẽ được jQuery thêm vào body */
+        body.dark-theme { background-color: #2c3e50; color: #ecf0f1; }
+        body.dark-theme button { background-color: #34495e; color: white; border-color: #7f8c8d; }
+    </style>
+</head>
+<body>
+    <h3>Câu 14: Chuyển đổi Theme Sáng/Tối</h3>
+    <button id="themeToggle">Chuyển sang nền Tối (On)</button>
+    <p>Nội dung trang web sẽ thay đổi màu sắc dựa trên theme được chọn.</p>
+
+    <script>
+        $(document).ready(function() {
+            let isDark = false;
+            $('#themeToggle').on('click', function() {
+                isDark = !isDark;
+                if (isDark) {
+                    $('body').addClass('dark-theme');$(this).text('Chuyển sang nền Sáng (Off)');
+                } else {
+                    $('body').removeClass('dark-theme');$(this).text('Chuyển sang nền Tối (On)');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

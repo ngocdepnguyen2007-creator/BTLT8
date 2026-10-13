@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Câu 13 - Toggle Password</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .pwd-container { position: relative; display: inline-block; }
+        input[type="password"], input[type="text"] { padding: 8px 35px 8px 8px; width: 200px; border: 1px solid #ccc; border-radius: 4px; }
+        .eye-icon { position: absolute; right: 10px; top: 8px; cursor: pointer; font-size: 16px; user-select: none; }
+    </style>
+</head>
+<body>
+    <h3>Câu 13: Ẩn/Hiện Mật Khẩu</h3>
+    <div class="pwd-container">
+        <input type="password" id="pwdInput" placeholder="Nhập mật khẩu...">
+        <span id="toggleEye" class="eye-icon">👁️</span>
+    </div>
+
+    <script>
+        $(document).ready(function() {$('#toggleEye').on('click', function() {
+                let pwdField = $('#pwdInput');
+                let fieldType = pwdField.attr('type');
+                
+                if (fieldType === 'password') {
+                    pwdField.attr('type', 'text');
+                    $(this).text('🙈');
+                } else {
+                    pwdField.attr('type', 'password');
+                    $(this).text('👁️');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

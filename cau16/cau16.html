@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Câu 16 - Quản lý User</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .form-group { margin-bottom: 15px; display: flex; gap: 10px; }
+        input { padding: 6px; border: 1px solid #ccc; }
+        button { padding: 6px 15px; cursor: pointer; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 15px; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+        th { background-color: #f4f4f4; }
+    </style>
+</head>
+<body>
+    <h3>Câu 16: Quản lý thông tin user</h3>
+    
+    <div class="form-group">
+        <input type="text" id="userName" placeholder="Name">
+        <input type="email" id="userEmail" placeholder="Email Address">
+        <input type="date" id="userBirth">
+        <button id="addRowBtn">Add Row</button>
+    </div>
+    
+    <table id="userTable">
+        <thead>
+            <tr>
+                <th style="width: 50px;">Select</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Birthdate</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Dòng dữ liệu sẽ thêm vào đây -->
+        </tbody>
+    </table>
+    
+    <button id="deleteRowBtn" style="color: red;">Delete Row</button>
+
+    <script>
+        $(document).ready(function() {
+            function isValidEmail(email) {
+                let regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return regex.test(email);
+            }
+
+            $('#addRowBtn').on('click', function() {
+                let name = $('#userName').val().trim();
+                let email = $('#userEmail').val().trim();
+                let birth = $('#userBirth').val();
+
+                if (name === '' || email === '' || birth === '') {
+                    alert('Vui lòng nhập đầy đủ thông tin!');
+                    return;
+                }
+
+                if (!isValidEmail(email)) {
+                    alert('Email không đúng định dạng!');
+                    return;
+                }
+
+                let newRow = `
+                    <tr>
+                        <td style="text-align:center;"><input type="checkbox" class="row-checkbox"></td>
+                        <td>${name}</td>
+                        <td>${email}</td>
+                        <td>${birth}</td>
+                    </tr>
+                `;
+                $('#userTable tbody').append(newRow);
+
+                $('#userName').val('');
+                $('#userEmail').val('');
+                $('#userBirth').val('');
+            });
+
+            $('#deleteRowBtn').on('click', function() {
+                $('#userTable tbody input.row-checkbox:checked').closest('tr').remove();
+            });
+        });
+    </script>
+</body>
+</html>

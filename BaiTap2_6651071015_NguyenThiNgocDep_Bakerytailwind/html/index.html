@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ngọc Đẹp Bakery - Landing Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-amber-50 text-stone-900 font-sans">
+    
+    <header class="bg-white shadow px-6 py-4 flex justify-between items-center sticky top-0 z-50">
+        <div class="text-2xl font-bold text-amber-700">Ngọc Đẹp Bakery</div>
+        <nav class="hidden md:flex space-x-6 font-semibold text-gray-600">
+            <a href="#" class="hover:text-amber-700 transition">Trang chủ</a>
+            <a href="#menu" class="hover:text-amber-700 transition">Thực đơn</a>
+            <a href="#story" class="hover:text-amber-700 transition">Câu chuyện</a>
+            <a href="#order" class="hover:text-amber-700 transition">Đặt bánh</a>
+        </nav>
+        <button id="hamburger-btn" class="md:hidden block focus:outline-none text-gray-700 hover:text-amber-700">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
+    </header>
+
+    <div id="mobile-menu" class="hidden flex-col bg-white border-t border-gray-200 px-6 py-4 shadow md:hidden space-y-4 font-semibold text-gray-600">
+        <a href="#" class="block hover:text-amber-700">Trang chủ</a>
+        <a href="#menu" class="block hover:text-amber-700">Thực đơn</a>
+        <a href="#story" class="block hover:text-amber-700">Câu chuyện</a>
+        <a href="#order" class="block hover:text-amber-700">Đặt bánh</a>
+    </div>
+
+    <section class="flex flex-col-reverse md:flex-row items-center justify-between px-10 py-16 bg-amber-100">
+        <div class="w-full md:w-1/2 text-center md:text-left mt-10 md:mt-0 pr-0 md:pr-10">
+            <h1 class="text-4xl md:text-6xl font-bold text-amber-900 mb-6 leading-tight">Hương vị thủ công<br>chân thành</h1>
+            <p class="text-lg text-amber-800 mb-8">Thưởng thức bánh ngọt tuyệt hảo, được làm từ những nguyên liệu tươi mới nhất mỗi ngày để mang lại niềm vui trong từng miếng cắn.</p>
+            <button class="bg-amber-600 hover:bg-amber-700 text-white font-bold px-8 py-3 rounded-full transition shadow-lg">Khám phá ngay</button>
+        </div>
+        <div class="w-full md:w-1/2">
+            <!-- Đổi sang ảnh Unsplash -->
+            <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=800&q=80" alt="Bánh ngọt thủ công" class="w-full h-80 rounded-2xl shadow-xl object-cover">
+        </div>
+    </section>
+
+    <section id="menu" class="py-16 px-6 max-w-7xl mx-auto">
+        <h2 class="text-3xl font-bold text-center text-amber-900 mb-12 relative">
+            Menu Bánh Nổi Bật
+            <span class="block w-24 h-1 bg-amber-500 mx-auto mt-4 rounded"></span>
+        </h2>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <article class="rounded-2xl shadow-lg overflow-hidden bg-white hover:shadow-xl transition duration-300">
+                <img src="https://images.unsplash.com/photo-1571115177098-24ec42ed204d?w=400&q=80" alt="Tiramisu" class="w-full h-56 object-cover">
+                <div class="p-6">
+                    <h3 class="font-bold text-xl mb-2 text-stone-800">Tiramisu Cổ Điển</h3>
+                    <p class="text-amber-600 font-bold text-lg">250.000đ</p>
+                </div>
+            </article>
+            <article class="rounded-2xl shadow-lg overflow-hidden bg-white hover:shadow-xl transition duration-300">
+                <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=400&q=80" alt="Matcha Mousse" class="w-full h-56 object-cover">
+                <div class="p-6">
+                    <h3 class="font-bold text-xl mb-2 text-stone-800">Bánh Mousse Ngọt</h3>
+                    <p class="text-amber-600 font-bold text-lg">220.000đ</p>
+                </div>
+            </article>
+            <article class="rounded-2xl shadow-lg overflow-hidden bg-white hover:shadow-xl transition duration-300">
+                <img src="https://images.unsplash.com/photo-1616541823729-00fe0aacd32c?w=400&q=80" alt="Red Velvet" class="w-full h-56 object-cover">
+                <div class="p-6">
+                    <h3 class="font-bold text-xl mb-2 text-stone-800">Red Velvet Kẹp Kem</h3>
+                    <p class="text-amber-600 font-bold text-lg">280.000đ</p>
+                </div>
+            </article>
+            <article class="rounded-2xl shadow-lg overflow-hidden bg-white hover:shadow-xl transition duration-300">
+                <img src="https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=400&q=80" alt="Cheesecake" class="w-full h-56 object-cover">
+                <div class="p-6">
+                    <h3 class="font-bold text-xl mb-2 text-stone-800">Macaron Hạnh Nhân</h3>
+                    <p class="text-amber-600 font-bold text-lg">300.000đ</p>
+                </div>
+            </article>
+            <article class="rounded-2xl shadow-lg overflow-hidden bg-white hover:shadow-xl transition duration-300">
+                <img src="https://images.unsplash.com/photo-1569864358642-9d1684040f43?w=400&q=80" alt="Macaron" class="w-full h-56 object-cover">
+                <div class="p-6">
+                    <h3 class="font-bold text-xl mb-2 text-stone-800">Chocolate Tart</h3>
+                    <p class="text-amber-600 font-bold text-lg">180.000đ</p>
+                </div>
+            </article>
+            <article class="rounded-2xl shadow-lg overflow-hidden bg-white hover:shadow-xl transition duration-300">
+                <img src="https://images.unsplash.com/photo-1519869325930-281384150729?w=400&q=80" alt="Bánh Tart" class="w-full h-56 object-cover">
+                <div class="p-6">
+                    <h3 class="font-bold text-xl mb-2 text-stone-800">Bánh Mứt Trái Cây</h3>
+                    <p class="text-amber-600 font-bold text-lg">150.000đ</p>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <div class="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 lg:grid-cols-3 gap-12">
+        <section id="story" class="lg:col-span-2">
+            <h2 class="text-3xl font-bold text-amber-900 mb-6">Khởi nguồn đam mê</h2>
+            <div class="text-stone-700 leading-relaxed text-lg space-y-4">
+                <p>Mỗi chiếc bánh tại tiệm không chỉ là một món ăn, mà còn là một tác phẩm nghệ thuật chứa đựng <strong>sự tỉ mỉ và chân thành</strong> của người thợ làm bánh.</p>
+                <p>Chúng tôi luôn nỗ lực tạo ra những hương vị <em>độc đáo nhất</em>, kết hợp sự tinh tế của ẩm thực Âu và sự mộc mạc của nguyên liệu truyền thống.</p>
+            </div>
+            <!-- Đổi sang ảnh Unsplash -->
+            <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=600&q=80" alt="Thợ làm bánh" class="w-full h-96 object-cover mt-6 rounded-xl shadow-md">
+        </section>
+
+        <aside id="order" class="lg:col-span-1 bg-amber-100 border border-amber-300 rounded-xl p-8 shadow-inner">
+            <h2 class="text-2xl font-bold text-amber-900 mb-6 text-center">Đặt bánh theo yêu cầu</h2>
+            <form class="space-y-5">
+                <div>
+                    <label class="block text-amber-900 font-semibold mb-2">Họ tên người nhận</label>
+                    <input type="text" placeholder="Nhập tên của bạn" class="w-full p-3 rounded-lg border-2 border-transparent focus:border-amber-500 focus:ring-0 outline-none transition">
+                </div>
+                <div>
+                    <label class="block text-amber-900 font-semibold mb-2">Số điện thoại</label>
+                    <input type="tel" placeholder="Nhập SĐT" class="w-full p-3 rounded-lg border-2 border-transparent focus:border-amber-500 focus:ring-0 outline-none transition">
+                </div>
+                <div>
+                    <label class="block text-amber-900 font-semibold mb-2">Mô tả yêu cầu bánh</label>
+                    <textarea rows="4" placeholder="Ví dụ: Bánh kem size 20, ít ngọt, vị chocolate..." class="w-full p-3 rounded-lg border-2 border-transparent focus:border-amber-500 focus:ring-0 outline-none transition"></textarea>
+                </div>
+                <button type="button" class="w-full bg-amber-700 hover:bg-amber-800 text-white font-bold py-3 rounded-lg transition shadow-md">Gửi yêu cầu ngay</button>
+            </form>
+        </aside>
+    </div>
+
+    <footer class="bg-stone-900 text-stone-400 py-12 px-6">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+                <h4 class="text-white text-xl font-bold mb-4">Ngọc Đẹp Bakery</h4>
+                <p class="text-sm">Hương vị thủ công chân thành, mang niềm vui đến mọi nhà.</p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4">Liên hệ</h4>
+                <ul class="text-sm space-y-2">
+                    <li>123 Đường Cầu Giấy, Hà Nội</li>
+                    <li>0123 456 789</li>
+                    <li>hello@bakery.com</li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4">Giờ mở cửa</h4>
+                <ul class="text-sm space-y-2">
+                    <li>Thứ 2 - Thứ 6: 08:00 - 22:00</li>
+                    <li>Thứ 7 - CN: 07:00 - 23:00</li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4">Mạng xã hội</h4>
+                <div class="flex space-x-4">
+                    <a href="#" class="hover:text-amber-500 transition">Facebook</a>
+                    <a href="#" class="hover:text-amber-500 transition">Instagram</a>
+                </div>
+            </div>
+        </div>
+        <div class="text-center text-sm border-t border-stone-700 mt-10 pt-6">
+            &copy; 2026 Ngọc Đẹp Bakery. Tất cả quyền được bảo lưu.
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>
